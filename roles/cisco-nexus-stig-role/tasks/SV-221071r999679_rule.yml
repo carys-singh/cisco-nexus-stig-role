@@ -1,0 +1,40 @@
+# DISA STIG:
+#   SRG-NET-000018-RTR-000001
+#   Severity: medium
+#   Rule ID: SV-221071r999679_rule
+#   Identifiers: SV-110961, V-101857, CCI-001368
+#   Title: The Cisco switch must enforce information flow control using ACLs.
+#
+# NOTE: mgmt0 is the only routed interface and currently lacks ACL enforcement.
+# This task creates the ACL (EXTERNAL_ACL) and applies it to mgmt0.
+
+- name: "[SV-221071r999679_rule] Configure EXTERNAL_ACL with required flow rules"
+  cisco.nxos.nxos_acl:
+    config:
+      - name: EXTERNAL_ACL
+        sequence:
+          - 10:
+              action: permit
+              protocol: tcp
+              src: 192.168.4.0/24
+              dest: any
+              dport: 22
+          - 20:
+              action: permit
+              protocol: icmp
+              src: any
+              dest: any
+          - 90:
+              action: deny
+              protocol: ip
+              src: any
+              dest: any
+
+- name: "[SV-221071r999679_rule] Apply EXTERNAL_ACL to mgmt0 interface"
+  cisco.nxos.nxos_interfaces:
+    config:
+      - name: mgmt0
+        ipv4:
+          access_group:
+            in: EXTERNAL_ACL
+
