@@ -1,10 +1,40 @@
 ---
 # tasks file for cisco-nexus-stig
 
+<<<<<<< HEAD
 - name: "SRG-NET-000018-RTR-000001"
   ansible.builtin.include_tasks: SV-221071r999679_rule.yml
   when: stig_rules.SRG_NET_000018_RTR_000001 | bool | default(true)
   
+=======
+<<<<<<< HEAD
+# - name: Enable NX-API
+#   hosts: ashburn-lab
+#   gather_facts: no
+
+# - name: Enable NXAPI access with default configuration
+#   nxos_nxapi:
+#     state: present
+#     enable_http: yes
+#     enable_https: yes
+
+# - name: Set NTP Server
+#   when: ansible_network_os == 'nxos'
+#   loop: "{{ ntp_servers }}"
+#   nxos_config:
+#     lines:
+#       - ntp server {{ item }} use-vrf default
+
+# don't wanna run this 80 times so...
+# when: ansible_network_os == 'nxos'
+
+- name: "SRG-NET-000018-RTR-000001"
+  ansible.builtin.include_tasks: SV-221071r999679_rule.yml
+  when: stig_rules.SRG_NET_000018_RTR_000001 | bool | default(true)
+
+=======
+>>>>>>> upstream/main
+>>>>>>> 3056315 (Add SV-221073r999682_rule)
 - name: "SRG-NET-000019-RTR-000007"
   ansible.builtin.include_tasks: SV-221076r999685_rule.yml
   when: stig_rules.SRG_NET_000019_RTR_000007 | bool | default(true)
@@ -47,6 +77,7 @@
   
 - name: "SRG-NET-000364-RTR-000113"
   ansible.builtin.include_tasks: SV-221099r999708_rule.yml
+<<<<<<< HEAD
   when: stig_rules.SRG_NET_000364_RTR_000113 | bool | default(true)
 
 - name: "SRG-NET-000512-RTR-000013"
@@ -56,3 +87,6 @@
 - name: "RG-NET-000364-RTR-000111"
   ansible.builtin.include_tasks: SV-221096r999705_rule.yml
   when: stig_rules.SRG_NET_000364_RTR_000111 | bool | default(true)
+=======
+  when: stig_rules.SRG_NET_000364_RTR_000113 | bool | default(true)
+>>>>>>> 3056315 (Add SV-221073r999682_rule)

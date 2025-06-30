@@ -32,8 +32,12 @@ stig_rules:
   SRG_NET_000364_RTR_000111: false
   SRG_NET_000364_RTR_000112: false
   SRG_NET_000512_RTR_000004: false
+<<<<<<< HEAD
   SRG_NET_000078_RTR_000001: false
   SRG_NET_000512_RTR_000013: false
+=======
+  SRG_NET_000078_RTR_000001: true
+>>>>>>> 3056315 (Add SV-221073r999682_rule)
 
 
 #
@@ -58,6 +62,7 @@ allowed_inbound_traffic:
 # Format: "- permit|deny <protocol> <source> <destination> [eq <port>] [log]"
 
 allowed_outbound_traffic:
+<<<<<<< HEAD
 # Format: "- permit|deny <protocol> <source> <destination> [eq <port>] [log]"
 
 external_mgmt_acl_name: EXTERNAL_MGMT_ACL
@@ -70,3 +75,6 @@ external_mgmt_permit_icmp: false
 allowed_ipv6_ula_ranges:
   - "fc00::/7"
   - "fe80::/10"
+=======
+# Format: "- permit|deny <protocol> <source> <destination> [eq <port>] [log]"
+>>>>>>> 3056315 (Add SV-221073r999682_rule)
